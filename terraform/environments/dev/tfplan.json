@@ -1,0 +1,216 @@
+{
+    "format_version": "0.1",
+    "terraform_version": "0.12.24",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_alb_listener.my-alb-listener",
+                    "mode": "managed",
+                    "type": "aws_alb_listener",
+                    "name": "my-alb-listener",
+                    "provider_name": "aws",
+                    "schema_version": 0,
+                    "values": {
+                        "certificate_arn": null,
+                        "default_action": [
+                            {
+                                "authenticate_cognito": [],
+                                "authenticate_oidc": [],
+                                "fixed_response": [],
+                                "forward": [],
+                                "redirect": [],
+                                "target_group_arn": "test",
+                                "type": "forward"
+                            }
+                        ],
+                        "load_balancer_arn": "test",
+                        "port": 80,
+                        "protocol": "HTTP",
+                        "timeouts": null
+                    }
+                },
+                {
+                    "address": "aws_security_group_rule.my-rule",
+                    "mode": "managed",
+                    "type": "aws_security_group_rule",
+                    "name": "my-rule",
+                    "provider_name": "aws",
+                    "schema_version": 2,
+                    "values": {
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ],
+                        "description": null,
+                        "from_port": 0,
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "protocol": "tcp",
+                        "security_group_id": "test",
+                        "self": false,
+                        "to_port": 65535,
+                        "type": "ingress"
+                    }
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "aws_alb_listener.my-alb-listener",
+            "mode": "managed",
+            "type": "aws_alb_listener",
+            "name": "my-alb-listener",
+            "provider_name": "aws",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "certificate_arn": null,
+                    "default_action": [
+                        {
+                            "authenticate_cognito": [],
+                            "authenticate_oidc": [],
+                            "fixed_response": [],
+                            "forward": [],
+                            "redirect": [],
+                            "target_group_arn": "test",
+                            "type": "forward"
+                        }
+                    ],
+                    "load_balancer_arn": "test",
+                    "port": 80,
+                    "protocol": "HTTP",
+                    "timeouts": null
+                },
+                "after_unknown": {
+                    "arn": true,
+                    "default_action": [
+                        {
+                            "authenticate_cognito": [],
+                            "authenticate_oidc": [],
+                            "fixed_response": [],
+                            "forward": [],
+                            "order": true,
+                            "redirect": []
+                        }
+                    ],
+                    "id": true,
+                    "ssl_policy": true
+                }
+            }
+        },
+        {
+            "address": "aws_security_group_rule.my-rule",
+            "mode": "managed",
+            "type": "aws_security_group_rule",
+            "name": "my-rule",
+            "provider_name": "aws",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "cidr_blocks": [
+                        "0.0.0.0/0"
+                    ],
+                    "description": null,
+                    "from_port": 0,
+                    "ipv6_cidr_blocks": null,
+                    "prefix_list_ids": null,
+                    "protocol": "tcp",
+                    "security_group_id": "test",
+                    "self": false,
+                    "to_port": 65535,
+                    "type": "ingress"
+                },
+                "after_unknown": {
+                    "cidr_blocks": [
+                        false
+                    ],
+                    "id": true,
+                    "source_security_group_id": true
+                }
+            }
+        }
+    ],
+    "configuration": {
+        "provider_config": {
+            "aws": {
+                "name": "aws",
+                "version_constraint": "~\u003e 2.0",
+                "expressions": {
+                    "region": {
+                        "constant_value": "us-east-2"
+                    }
+                }
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_alb_listener.my-alb-listener",
+                    "mode": "managed",
+                    "type": "aws_alb_listener",
+                    "name": "my-alb-listener",
+                    "provider_config_key": "aws",
+                    "expressions": {
+                        "default_action": [
+                            {
+                                "target_group_arn": {
+                                    "constant_value": "test"
+                                },
+                                "type": {
+                                    "constant_value": "forward"
+                                }
+                            }
+                        ],
+                        "load_balancer_arn": {
+                            "constant_value": "test"
+                        },
+                        "port": {
+                            "constant_value": "80"
+                        },
+                        "protocol": {
+                            "constant_value": "HTTP"
+                        }
+                    },
+                    "schema_version": 0
+                },
+                {
+                    "address": "aws_security_group_rule.my-rule",
+                    "mode": "managed",
+                    "type": "aws_security_group_rule",
+                    "name": "my-rule",
+                    "provider_config_key": "aws",
+                    "expressions": {
+                        "cidr_blocks": {
+                            "constant_value": [
+                                "0.0.0.0/0"
+                            ]
+                        },
+                        "from_port": {
+                            "constant_value": 0
+                        },
+                        "protocol": {
+                            "constant_value": "tcp"
+                        },
+                        "security_group_id": {
+                            "constant_value": "test"
+                        },
+                        "to_port": {
+                            "constant_value": 65535
+                        },
+                        "type": {
+                            "constant_value": "ingress"
+                        }
+                    },
+                    "schema_version": 2
+                }
+            ]
+        }
+    }
+}

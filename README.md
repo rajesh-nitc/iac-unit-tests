@@ -1,10 +1,25 @@
 # Iac
 ## Getting Started
 ### Prerequistes
-Install Sentinel Simulator
+Install Conftest
 ```
-wget https://releases.hashicorp.com/sentinel/0.15.5/sentinel_0.15.5_linux_amd64.zip
-unzip sentinel_0.15.5_linux_amd64.zip
-mv sentinel /usr/local/bin
+wget https://github.com/instrumenta/conftest/releases/download/v0.17.1/conftest_0.17.1_Linux_x86_64.tar.gz
+tar xzf conftest_0.17.1_Linux_x86_64.tar.gz
+sudo mv conftest /usr/local/bin
 ```
-### Apply Policy
+### Validate
+```
+cd terraform/environments/dev
+terraform init
+terraform validate
+```
+### Plan
+```
+terraform plan --out planfile
+terraform show -json planfile > tfplan.json
+```
+### Test
+```
+cd ~/iac-unit-tests
+conftest test terraform/environments/dev/tfplan.json
+```
